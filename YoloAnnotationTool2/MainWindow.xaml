@@ -1,0 +1,209 @@
+﻿<Window x:Class="YoloAnnotationTool.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:av="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        mc:Ignorable="av" 
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        Title="MainWindow" Height="1080" Width="1920" 
+        WindowState="Maximized"
+        WindowStyle="SingleBorderWindow"
+        ResizeMode="CanResize">
+
+    <Window.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#F0F4F7" Offset="0"/>
+            <GradientStop Color="#FFFFFF" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
+
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#FF007ACC"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderBrush" Value="#FF005499"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="1" CornerRadius="5">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="Label">
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="Foreground" Value="#333333"/>
+        </Style>
+
+        <!-- Стиль текстових полів -->
+        <Style TargetType="TextBox">
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="BorderBrush" Value="#FF007ACC"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style>
+
+        <Style TargetType="ListBox">
+            <Setter Property="Margin" Value="2"/>
+            <Setter Property="Padding" Value="2"/>
+            <Setter Property="BorderBrush" Value="#FF007ACC"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style>
+
+        <Style TargetType="Expander">
+            <Setter Property="Margin" Value="2"/>
+            <Setter Property="HeaderTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}" FontWeight="Bold" Foreground="#FF007ACC"/>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="RadioButton">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Foreground" Value="#333333"/>
+        </Style>
+
+        <Style TargetType="ComboBox">
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="BorderBrush" Value="#FF007ACC"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="10" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <Button Grid.Row="0" Grid.Column="0" Content="File" Width="70" HorizontalAlignment="Left" FontSize="15">
+            <Button.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="= Open" Width="300" Click="MenuItemOpen_Click" BorderBrush="AliceBlue" BorderThickness="2"/>
+                    <MenuItem Header="+ New project" Width="300" Click="MenuItemNew_Click"/>
+                    <MenuItem Header="Set folder for saving projects" Width="300" Click="ChooseProjectsPath"/>
+                </ContextMenu>
+            </Button.ContextMenu>
+        </Button>
+
+
+        <Label Grid.Column="0" Content="Annotation type:" Margin="76,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="17"/>
+        <Label Grid.Row="0" Grid.Column="0" Content="Project name:" Margin="611,-3,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="17" RenderTransformOrigin="0.213,0.647"/>
+
+        <TextBox Grid.Row="0" Grid.Column="0" Text="{Binding TitleOfProject}" Name="inputTextBox" FontSize="20"
+                 HorizontalAlignment="Left" Margin="611,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="235" Height="30" />
+
+        <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Label  Content="The current project saving folder:" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="15"/>
+            <Label Content="{Binding LabelText}"  HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="15"/>
+        </StackPanel>
+
+
+        <StackPanel Orientation="Horizontal" Margin="216,13,0,7" Width="400" HorizontalAlignment="Left">
+            <RadioButton Content="Detect" FontSize="15" 
+                         Checked="Detect_Checked" IsChecked="{Binding IsOptionDetectChecked}"   
+                         GroupName="Options" Margin="10,0,0,0" VerticalAlignment="Center" />
+            <RadioButton Content="OBB" FontSize="15"
+                         Checked="OBB_Checked" IsChecked="{Binding IsOptionOBBChecked}"   
+                         GroupName="Options" Margin="10,0,0,0" VerticalAlignment="Center"/>
+            <RadioButton Content="Segment" FontSize="15"
+                         Checked="Segment_Checked" IsChecked="{Binding IsOptionSegmentChecked}"   
+                         GroupName="Options" Margin="10,0,0,0" VerticalAlignment="Center"/>
+            <RadioButton Content="Classify" FontSize="15"
+                         Checked="Classify_Checked" IsChecked="{Binding IsOptionClassifyChecked}"   
+                         GroupName="Options" Margin="10,0,0,0" VerticalAlignment="Center"/>
+            <RadioButton Content="Pose" FontSize="15"
+                         Checked="Pose_Checked" IsChecked="{Binding IsOptionPoseChecked}"   
+                         GroupName="Options" Margin="10,0,0,0" VerticalAlignment="Center"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.Column="0" Width="310" HorizontalAlignment="Left" Orientation="Horizontal" Height="30" VerticalAlignment="Top" Margin="10,4,0,0">
+            <Label Content="Current project:" FontSize="15"/>
+            <Label Content="{Binding CurrentProject}" Margin="0,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize ="15"/>
+        </StackPanel>
+
+        <StackPanel Margin="10,35,0,-5" Grid.Column="0" Grid.Row="1" Width="350" HorizontalAlignment="Left">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <Button Name="addTrain" Content="+" Width="20" Height="25" Margin="0,0,10,0" Click="AddTrainButton_Click" />
+                <Expander Header="Train" IsExpanded="False" Width="300" Name="TrainHeader" FontSize="15">
+                    <ListBox Name="TrainListBox" ItemsSource="{Binding TrainImages}" 
+                             SelectedItem="{Binding SelectedTrainImage}"
+                             Height="280" SelectionChanged="TrainListBox_SelectionChanged"/>
+                </Expander>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,10,0,0">
+                <Button Name="addVal" Content="+" Width="20" Height="25" Margin="0,0,10,0" Click="addVal_Click"/>
+                <Expander Header="Val" IsExpanded="False" Width="300" Name="ValHeader" FontSize="15">
+                    <ListBox Name="ValListBox" ItemsSource="{Binding ValImages}"
+                             SelectedItem="{Binding SelectedValImage}"
+                             Height="280" SelectionChanged="ValListBox_SelectionChanged"/>
+                </Expander>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,10,0,0">
+                <Button Name="addTest" Content="+" Width="20" Height="25" Margin="0,0,10,0" Click="addTest_Click"/>
+                <Expander Header="Test" IsExpanded="False" Width="300" Name="TestHeader" FontSize="15">
+                    <ListBox Name="TestListBox" ItemsSource="{Binding TestImages}"
+                             SelectedItem="{Binding SelectedTestImage}"
+                             Height="230" SelectionChanged="TestListBox_SelectionChanged"/>
+                </Expander>
+            </StackPanel>
+        </StackPanel>
+
+
+        <Border Grid.Column="0" Grid.Row="1" Margin="354,6,15,213"
+        CornerRadius="10" BorderBrush="#FF007ACC" BorderThickness="2">
+            <Grid>
+                <Image x:Name="Image1" Source="{Binding SelectedImagePath}" Stretch="Uniform" />
+
+                <Canvas x:Name="DrawCanvas"
+                Background="Transparent"
+                MouseLeftButtonDown="Canvas_MouseLeftButtonDown"
+                MouseMove="Canvas_MouseMove"
+                MouseLeftButtonUp="Canvas_MouseLeftButtonUp" 
+                MouseLeave="DrawCanvas_MouseLeave"/>
+
+                <Canvas x:Name="OverlayCanvas"
+                IsHitTestVisible="False"
+                Background="Transparent"/>
+            </Grid>
+        </Border>
+
+        <Label HorizontalAlignment="Left" Margin="387,20,0,0" Grid.Row="1" VerticalAlignment="Top" Content="{Binding SelectedImageName}"/>
+
+        <StackPanel Orientation="Horizontal" Margin="819,0,0,125" Grid.Row="1" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Left" Height="30">
+            <Rectangle Width="20" Margin="0,0,10,0" Fill="{Binding CurrentLabelColor}"/>
+            <xctk:WatermarkTextBox Watermark="Enter the name of the class..." Width="200" Height="25" VerticalAlignment="Center" HorizontalAlignment="Center" Name="NewClassTextBox" />
+            <Button Name ="AddClass" Content="+ Add class" Margin="5,0,0,0" Click="AddClassButton_Click" Height="30" Width="120" FontSize="15"/>
+            <Button Name ="SaveButton" Content="💾 Save" Margin="20,0,0,0" Click="Save_Click" Height="30" Width="100" FontSize="15"/>
+            <Label Content="{Binding saveStatus}" FontFamily="Segoe UI Emoji" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,10,0" FontSize="15"/>
+            <Button Content="Archive" Margin="20,0,0,0" Height="30" Click="SaveZipClick" Width="118" FontSize="15"/>
+        </StackPanel>
+
+        <ComboBox ItemsSource="{Binding ClassLabels}" Grid.Column="0" Grid.Row="1" VerticalAlignment="Bottom" Height="25"
+                  SelectedItem="{Binding SelectedClassLabel}" Width="200" Margin="0,0,0,90" SelectionChanged="ComboBox_SelectionChanged"/>
+        <StackPanel Grid.Row="1" Grid.Column="0" Height="30" Width="auto"
+            VerticalAlignment="Bottom" Margin="354,0,0,178" HorizontalAlignment="Center"
+            Orientation="Horizontal">
+            <TextBlock Text ="{Binding pointCounterText}" VerticalAlignment="Center" Margin="10,0,0,0" HorizontalAlignment="Center" TextAlignment="Center"/>
+        </StackPanel>
+
+    </Grid>
+</Window>
