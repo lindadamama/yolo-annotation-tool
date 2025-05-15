@@ -99,8 +99,8 @@ namespace YoloAnnotationTool
                     ViewModel.ClassLabels.Clear();
                     ViewModel.SelectedImageName = null;
                     ViewModel.CurrentLabelColor = System.Windows.Media.Brushes.White;
-                    Image1.Source = null; // Очищає зображення
-                    DrawCanvas.Children.Clear(); // Очищає прямокутники
+                    Image1.Source = null;
+                    DrawCanvas.Children.Clear(); 
                     string selectedPath = dialog.SelectedPath;
                     ViewModel.PoseKeypoints.Clear();
                     ViewModel.PoseSkeletonLines.Clear();
@@ -196,7 +196,6 @@ namespace YoloAnnotationTool
                 }
             }
         }
-
         private void MenuItemNew_Click(object sender, RoutedEventArgs e)
         {
             var binding = BindingOperations.GetBindingExpression(inputTextBox, System.Windows.Controls.TextBox.TextProperty);
@@ -208,7 +207,7 @@ namespace YoloAnnotationTool
 
             if (string.IsNullOrWhiteSpace(ViewModel.TitleOfProject))
             {
-                System.Windows.MessageBox.Show("Будь ласка, введіть назву проєкту");
+                System.Windows.MessageBox.Show("Please enter a project name");
                 return;
             }
 
@@ -218,7 +217,7 @@ namespace YoloAnnotationTool
 
             if (string.IsNullOrEmpty(suffix))
             {
-                System.Windows.MessageBox.Show("Ви не обрали тип проекту");
+                System.Windows.MessageBox.Show("You did not select a project type");
                 return;
             }
 
@@ -226,7 +225,7 @@ namespace YoloAnnotationTool
             ViewModel.projectWithSuffix = ViewModel.TitleOfProject + suffix;
             if (Directory.Exists(projectPath))
             {
-                System.Windows.MessageBox.Show("Проект з такою назвою вже існує");
+                System.Windows.MessageBox.Show("A project with this name already exists");
                 return;
             }
 
@@ -285,11 +284,9 @@ namespace YoloAnnotationTool
                 string labelsJson = Path.Combine(settings.CurrentProjectPath, "class_labels.json");
                 using (File.Create(colorsJson)) { }
                 Thread.Sleep(100);
-                // Зробити його прихованим
                 File.SetAttributes(colorsJson, FileAttributes.Hidden);
                 using (File.Create(labelsJson)) { }
                 Thread.Sleep(100);
-                // Зробити його прихованим
                 File.SetAttributes(labelsJson, FileAttributes.Hidden);
             }
             if(suffix == "_Pose")
@@ -298,7 +295,7 @@ namespace YoloAnnotationTool
                 ViewModel.ClassLabels.Add("person");
                 ViewModel.SelectedClassLabel = "person";
             }
-            System.Windows.MessageBox.Show("Проєкт успішно створено!");
+            System.Windows.MessageBox.Show("The project has been successfully created!");
         }
         private string GetAnnotationSuffix()
         {
@@ -604,9 +601,8 @@ namespace YoloAnnotationTool
 
                         string destFileName = Path.Combine(targetDir, Path.GetFileName(filename));
 
-                        File.Copy(filename, destFileName, overwrite: true); // просто копіюємо файл як є
+                        File.Copy(filename, destFileName, overwrite: true); 
 
-                        // Додаємо в список у ViewModel
                         ViewModel.ValImages.Add(Path.GetFileName(destFileName));
 
                     }
@@ -943,7 +939,6 @@ namespace YoloAnnotationTool
                     ViewModel.SelectedTestImage
                 );
 
-                // Очищаємо канву та списки перед завантаженням нового зображення
                 DrawCanvas.Children.Clear();
                 ViewModel.drawnRectangles.Clear();
                 ViewModel.drawnPolygons.Clear();
@@ -959,7 +954,6 @@ namespace YoloAnnotationTool
                         bitmap.EndInit();
                         Image1.Source = bitmap;
 
-                        // Чекаємо, поки зображення повністю завантажиться
                         Image1.Dispatcher.InvokeAsync(() =>
                         {
                             if (Image1.Source is BitmapSource bitmap)
@@ -1531,7 +1525,7 @@ namespace YoloAnnotationTool
             {
                 if (ViewModel.CurrentProject == null || string.IsNullOrEmpty(ViewModel.CurrentProject))
                 {
-                    MessageBox.Show("Не можна додавати клас без створеного проекту");
+                    MessageBox.Show("You cannot add a class without a created project");
                     return;
                 }
                 addClassClassify(newClass);
@@ -1539,7 +1533,7 @@ namespace YoloAnnotationTool
             }
             if(ViewModel.CurrentProject == null || string.IsNullOrEmpty(ViewModel.CurrentProject))
             {
-                MessageBox.Show("Не можна додавати клас без створеного проекту");
+                MessageBox.Show("You cannot add a class without a created project");
                 return;
             }
             if (!string.IsNullOrEmpty(newClass) && !ViewModel.ClassLabels.Contains(newClass))
