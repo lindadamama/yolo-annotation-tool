@@ -19,7 +19,9 @@ Next, to create a project, enter the name of the project, the type of annotation
 After that, Right click on File -> "+ New Project".
 The folder in a format "ProjectName_SelectedAnnotationType" will be created in the directory you set for saving projects
 
-## Controls
+## How to use
+
+### Prepare for annotation
 
 Before adding any annotations, you need to add photos
 
@@ -31,5 +33,5 @@ Then, you need to add classes
 
 ![зображення](https://github.com/user-attachments/assets/13f3ab32-7359-4991-b1a6-e9ee039aeaa1)
 
-# Detect
+#### Detect
 
