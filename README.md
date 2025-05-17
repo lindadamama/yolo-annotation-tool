@@ -50,3 +50,6 @@ There is no drawing so it's just organisation of photos
 1. Add class with the name of object that you want to classify (directory with the name of class will be created)
 2. Add photos to the current selected class
 Then, you can swap between classes and see which photo is in which class
+#### ⚙ Shortcuts
+CTRL + Z - remove last added figure
+(Click save after removing unwanted figures)
