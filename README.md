@@ -1,4 +1,4 @@
-# YoloAnnotationTool2
+# YoloAnnotationTool
 
 yolo-annotation-tool - it's a simple tool for annotating objects in YOLO format (Detect, OBB, Segment, Classify, Pose). 
 It creates a project structure compatible with YOLOv8/v11, allows you to annotate photos, and saves annotation data in .txt in YOLO format. Also, after completion, you can archive the project folder to start training models immediately  
@@ -44,12 +44,20 @@ Then, you need to add classes
 3. Click "Save" to save coordinates of painted segments
 #### Pose
 1. Follow the instructions under the canvas to draw pose
-2. Click "Save" to save coordinates of painted poses
+2. Each click defines the part of body
+3. Click "Save" after completion of pose to save coordinates of painted poses
 #### Classify
 There is no drawing so it's just organisation of photos
 1. Add class with the name of object that you want to classify (directory with the name of class will be created)
 2. Add photos to the current selected class
 Then, you can swap between classes and see which photo is in which class
 #### ⚙ Shortcuts
-CTRL + Z - remove last added figure
-(Click save after removing unwanted figures)
+CTRL + Z - remove last added shapes
+(Click save after removing unwanted shapes)
+
+### How to archive
+After you finish drawing annotations, just click the archive button, the archive will be created in the directory you specified for saving projects. Right after that you can upload this archive to the Ultralytics HUB, or use it locally on your computer to start training your model.
+
+## Notes 
+By default there is no "test" directory, but it will be created automatically after adding photos via tool
+You can also open existing project by clicking "File -> = Open project", but you must only open project with a format "ProjectName_SelectedAnnotationType", for example, "GuitarShapes_OBB". Otherwise, tool will not work correctly.
