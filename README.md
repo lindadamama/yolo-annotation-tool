@@ -17,8 +17,27 @@ First, you need to set up a directory to store your projects: Right click on Fil
 
 Next, to create a project, enter the name of the project, the type of annotations
 After that, Right click on File -> "+ New Project".
-The folder "ProjectName_SelectedAnnotationType" will be created in the directory you set for saving projects
+The folder in a format "ProjectName_SelectedAnnotationType" will be created in the directory you set for saving projects
 
 ## Controls
 
+Before adding any annotations, you need to add photos
+![зображення](https://github.com/user-attachments/assets/549b2efa-c536-4bf5-8dfc-5da54fc8dc5f)
+
+Then, you need to add classes
+![зображення](https://github.com/user-attachments/assets/da28cdfe-455f-4d30-b874-dd10f1eea459)
+![зображення](https://github.com/user-attachments/assets/13f3ab32-7359-4991-b1a6-e9ee039aeaa1)
+
 1. Detect
+  1.1 Hold down the left click
+  1.2 Draw a rectangle with the mouse
+  1.3 Release a mouse
+  1.4 Click "Save" to save rectangle coordinates in .txt
+2. OBB
+  1.1 Hold down the left click
+  1.2 Draw a desired rectangle length and angle
+  1.3 Hold Shift additionally
+  1.4 Draw a desired width of rectangle
+  1.5 Release a mouse
+  1.4 Click "Save" to save rectangle coordinates in .txt
+3. 
