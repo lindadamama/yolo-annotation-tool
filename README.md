@@ -22,10 +22,13 @@ The folder in a format "ProjectName_SelectedAnnotationType" will be created in t
 ## Controls
 
 Before adding any annotations, you need to add photos
+
 ![зображення](https://github.com/user-attachments/assets/549b2efa-c536-4bf5-8dfc-5da54fc8dc5f)
 
 Then, you need to add classes
+
 ![зображення](https://github.com/user-attachments/assets/da28cdfe-455f-4d30-b874-dd10f1eea459)
+
 ![зображення](https://github.com/user-attachments/assets/13f3ab32-7359-4991-b1a6-e9ee039aeaa1)
 
 1. Detect
