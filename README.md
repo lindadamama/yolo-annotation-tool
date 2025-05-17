@@ -59,5 +59,14 @@ CTRL + Z - remove last added shapes
 After you finish drawing annotations, just click the archive button, the archive will be created in the directory you specified for saving projects. Right after that you can upload this archive to the Ultralytics HUB, or use it locally on your computer to start training your model.
 
 ## Notes 
-By default there is no "test" directory, but it will be created automatically after adding photos via tool
-You can also open existing project by clicking "File -> = Open project", but you must only open project with a format "ProjectName_SelectedAnnotationType", for example, "GuitarShapes_OBB". Otherwise, tool will not work correctly.
+- By default there is no "test" directory, but it will be created automatically after adding photos via tool
+- You can also open existing project by clicking "File -> = Open project", but you must only open project with a format "ProjectName_SelectedAnnotationType", for example, "GuitarShapes_OBB". Otherwise, tool will not work correctly.
+- For now, in "Pose" there is only one drawing option with invsibility = 2, i.e. every part of the body must be visible. So if you want to train model with your poses, ensure that there will be full pose on photos
+
+## 🛠️ System Requirements
+
+To run this WPF application, you need:
+
+- **Windows 10 / 11**
+- [.NET Desktop Runtime 8.0+](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) (or the version you used)
+  - Run `dotnet --list-runtimes` in terminal to check
