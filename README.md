@@ -32,15 +32,15 @@ Then, you need to add classes
 ![зображення](https://github.com/user-attachments/assets/13f3ab32-7359-4991-b1a6-e9ee039aeaa1)
 
 1. Detect
-  1.1 Hold down the left click
-  1.2 Draw a rectangle with the mouse
-  1.3 Release a mouse
-  1.4 Click "Save" to save rectangle coordinates in .txt
+  1. Hold down the left click
+  2. Draw a rectangle with the mouse
+  3. Release a mouse
+  4. Click "Save" to save rectangle coordinates in .txt
 2. OBB
-  1.1 Hold down the left click
-  1.2 Draw a desired rectangle length and angle
-  1.3 Hold Shift additionally
-  1.4 Draw a desired width of rectangle
-  1.5 Release a mouse
-  1.4 Click "Save" to save rectangle coordinates in .txt
-3. 
+  1. Hold down the left click
+  2. Draw a desired rectangle length and angle
+  3. Hold Shift additionally
+  4. Draw a desired width of rectangle
+  5. Release a mouse
+  6. Click "Save" to save rectangle coordinates in .txt
+
