@@ -31,4 +31,5 @@ Then, you need to add classes
 
 ![зображення](https://github.com/user-attachments/assets/13f3ab32-7359-4991-b1a6-e9ee039aeaa1)
 
+# Detect
 
