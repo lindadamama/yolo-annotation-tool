@@ -68,5 +68,5 @@ After you finish drawing annotations, just click the archive button, the archive
 To run this WPF application, you need:
 
 - **Windows 10 / 11**
-- [.NET Desktop Runtime 8.0+](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) (or the version you used)
+- [.NET Desktop Runtime 8.0+](https://dotnet.microsoft.com/en-us/download/dotnet/8.0) 
   - Run `dotnet --list-runtimes` in terminal to check
